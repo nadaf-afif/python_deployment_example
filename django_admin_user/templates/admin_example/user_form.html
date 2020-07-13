@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'admin_example/base.html'%}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    <h1>User Registration!</h1>
+
+    {% if registered%}
+    <h1>Thank You !!</h1>
+    {% else %}
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {% if user_form%}
+        {{ user_form.as_p }}
+        {% endif %}
+
+        {% if information_form%}
+        {{ information_form.as_p }}
+        {% endif %}
+
+        <input type="submit" value="Register" class="btn btn-primary">
+
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}
